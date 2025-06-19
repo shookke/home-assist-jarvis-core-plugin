@@ -1,6 +1,6 @@
-// /plugin.go
-// This is the main file for the Home Assistant Assist plug-in.
-// It is designed to be cloned, compiled, and dynamically loaded by the Jarvis Core service.
+// This is the corrected main file for the Home Assistant Assist plug-in.
+// It includes all necessary, matching struct definitions to ensure compatibility
+// with the main Jarvis Core service that loads it.
 package main
 
 import (
@@ -10,20 +10,29 @@ import (
 	"time"
 )
 
-// These type definitions must match the ones in the main Jarvis Core service
-// for the Go plug-in system to work correctly.
+// =========================================================================
+// Models and Core Structs
+// These MUST exactly match the definitions in the main Jarvis system.
+// =========================================================================
+
 type ToolFunction func(ctx context.Context, args map[string]interface{}) (string, error)
+
 type ArgumentDefinition struct {
 	Name        string `json:"name"`
 	Description string `json:"description"`
 	Required    bool   `json:"required"`
 }
+
 type ToolDefinition struct {
 	Name         string               `json:"name"`
 	Description  string               `json:"description"`
 	Arguments    []ArgumentDefinition `json:"arguments"`
 	FunctionName string               `json:"function_name"`
 }
+
+// =========================================================================
+// Plug-in Implementation
+// =========================================================================
 
 // GetTools is the required public entry point that Jarvis Core will look for.
 // It returns a slice of all tool definitions provided by this plug-in.
