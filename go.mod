@@ -11,4 +11,4 @@ require (
 // You will need to add a replace directive in the plug-in's go.mod as well
 // during local development, or publish the types package to a real repository.
 // For now, this assumes a local setup.
-replace jarvis-types => ./pkg/jarvis-types 
+replace jarvis-types => ../pkg/jarvis-types 
